@@ -7,6 +7,7 @@ class Solution:
         Use find() and rfind() to determine the first and last occurrence of the character.
         Count the unique middle characters between the first and last positions using set().
         Sum up the counts for all unique characters.
+        Credits to "https://leetcode.com/u/suhas_sr7/" for the solution.
         '''
 
         count = 0
@@ -21,7 +22,7 @@ def TestSolution():
     assert Solution().countPalindromicSubsequence("aabca") == 3
     assert Solution().countPalindromicSubsequence("adc") == 0
     assert Solution().countPalindromicSubsequence("bbcbaba") == 4
-    
+
 
 if __name__ == "__main__":
     TestSolution()    
