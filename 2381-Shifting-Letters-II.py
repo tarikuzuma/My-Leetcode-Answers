@@ -33,6 +33,8 @@ class Solution:
 
         # 3. Shift the characters
         shifted_string = ""
+
+        # This loop shifts the characters by the cumilitive shifts based on the remainder of the shifts
         for i in range(n):
             shifted_string += chr((ord(s[i]) - ord('a') + cumilitive_shifts[i]) % 26 + ord('a'))
 
@@ -52,3 +54,48 @@ if __name__ == "__main__":
     # string = "czuu"
     # queues = [[0, 0, 0], [1, 1, 1]]
     # solution.shiftingLetters(string, queues)
+
+
+
+'''
+Java:
+class Solution {
+    public String shiftingLetters(String s, int[][] shifts) {
+        int n = s.length();
+        
+        // Step 1: Create the difference array
+        int[] diffArray = new int[n + 1];
+        for (int[] shift : shifts) {
+            if (shift[2] == 1) { // Right shift
+                diffArray[shift[0]] += 1;
+                diffArray[shift[1] + 1] -= 1;
+            } else { // Left shift
+                diffArray[shift[0]] -= 1;
+                diffArray[shift[1] + 1] += 1;
+            }
+        }
+        
+        // Step 2: Calculate the cumulative shifts
+        int[] cumulativeShifts = new int[n];
+        int currentShift = 0;
+        for (int i = 0; i < n; i++) {
+            currentShift += diffArray[i];
+            cumulativeShifts[i] = currentShift;
+        }
+        
+        // Step 3: Shift the characters in the string
+        StringBuilder shiftedString = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            int newChar = (s.charAt(i) - 'a' + cumulativeShifts[i]) % 26;
+            if (newChar < 0) {
+                newChar += 26; // Handle negative shifts to wrap around
+            }
+            shiftedString.append((char) ('a' + newChar));
+        }
+        
+        // Return the final shifted string
+        return shiftedString.toString();
+    }
+}
+
+'''
