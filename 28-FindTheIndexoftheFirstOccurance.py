@@ -1,5 +1,6 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
+        # Time complexity in O(N∗M)
         if needle not in haystack:
             return -1
         else:
