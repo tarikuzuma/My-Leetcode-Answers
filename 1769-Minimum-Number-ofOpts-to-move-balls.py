@@ -23,3 +23,35 @@ def TestSolution():
 
 if __name__ == "__main__":
     TestSolution() 
+
+
+# Java:
+'''
+from java.util.ArrayList;
+from java.util.List;
+
+class Solution {
+    public List<Integer> minOperations(String boxes) {
+        // Algo is in O(n^2) time complexity and O(n) space complexity because of the two loops
+
+        // pos is a list that stores the positions of the 1s in the boxes string
+        List<Integer> pos = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
+
+        // Find the positions of the 1s in the boxes string
+        for (int i = 0; i < boxes.length(); i++) {
+            if (boxes.charAt(i) == '1') {
+                pos.add(i);
+            }
+        }
+        for (int i = 0; i < boxes.length(); i++) {
+            int sum = 0;
+            for (int j = 0; j < pos.size(); j++) {
+                sum += Math.abs(i - pos.get(j));
+            }
+            ans.add(sum);
+        }
+        return ans;
+    }
+}
+'''
