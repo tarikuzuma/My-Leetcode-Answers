@@ -2,6 +2,9 @@ from typing import List
 
 class Solution:
     def prefixCount(self, words: List[str], pref: str) -> int:
+        # This problem is a joke in python
+        
+        # Time copelxity in the worst case is O(n) where n is the number of words
         count = 0
         for word in words:
             if word.startswith(pref):
