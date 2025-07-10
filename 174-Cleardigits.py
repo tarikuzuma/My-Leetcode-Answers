@@ -1,14 +1,15 @@
 class Solution:
     def clearDigits(self, s: str) -> str:
-        sb = []
+        stack = []
 
-        for c in s:
-            if c.isdigit():
-                sb.append(c)
+        for ch in s:
+            if ch.isdigit():
+                stack.pop()
+
             else:
-                break
+                stack.append(ch)
 
-        return "".join(sb)
+        return "".join(stack)
     
 def TestSolution():
     assert Solution().clearDigits("123abc") == "123", "Test case 1 failed"
