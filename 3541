@@ -1,0 +1,26 @@
+class Solution:
+    def maxFreqSum(self, s: str) -> int:
+        # tried making it as brute force as possible
+        # but it still works in O(n^2) time complexity
+        vowels = 'aeiou'
+        vowels_in_s = []
+        consonance = []
+        for char in s.lower():
+            if char in vowels:
+                vowels_in_s.append(char)
+            else:
+                consonance.append(char)
+
+        most_frequent_vowel_count = 0
+        for vowel in vowels:
+            count = vowels_in_s.count(vowel)
+            if count > most_frequent_vowel_count:
+                most_frequent_vowel_count = count
+
+        most_frequent_consonance_count = 0
+        for consonant in consonance:
+            count = consonance.count(consonant)
+            if count > most_frequent_consonance_count:
+                most_frequent_consonance_count = count
+
+        return most_frequent_vowel_count + most_frequent_consonance_count
